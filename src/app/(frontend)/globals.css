@@ -5,27 +5,29 @@
   --font-body: var(--font-quicksand), 'Helvetica Neue', sans-serif;
 
   /*
-   * Default theme: "fairy". Every color utility resolves to these variables,
-   * so a theme is just a block overriding them under html[data-theme='...'].
+   * Default theme: "aura" — inspired by aura photography and soft-gradient
+   * orb art. Every color utility resolves to these variables, so a theme is
+   * just a block overriding them under html[data-theme='...'].
+   * (The "fairy-" prefix in variable names is historic.)
    */
-  --color-fairy-violet: #8b5cf6;
-  --color-fairy-violet-deep: #6d28d9;
-  --color-fairy-violet-soft: #ede9fe;
-  --color-fairy-rose: #ec4899;
-  --color-fairy-rose-deep: #be185d;
-  --color-fairy-rose-soft: #fce7f3;
-  --color-fairy-gold: #d97706;
-  --color-fairy-gold-deep: #b45309;
-  --color-fairy-gold-soft: #fef3c7;
-  --color-fairy-teal: #0d9488;
-  --color-fairy-teal-deep: #0f766e;
-  --color-fairy-teal-soft: #ccfbf1;
+  --color-fairy-violet: #5a5af0;
+  --color-fairy-violet-deep: #3538c9;
+  --color-fairy-violet-soft: #e5e6fd;
+  --color-fairy-rose: #e93bb4;
+  --color-fairy-rose-deep: #b31c88;
+  --color-fairy-rose-soft: #fbe2f4;
+  --color-fairy-gold: #f97316;
+  --color-fairy-gold-deep: #c05609;
+  --color-fairy-gold-soft: #ffe8d4;
+  --color-fairy-teal: #10b981;
+  --color-fairy-teal-deep: #077a58;
+  --color-fairy-teal-soft: #d9f7ea;
 
   /* Base */
-  --color-night: #372554;
-  --color-night-soft: #5b4a7a;
-  --color-cream: #fdfaff;
-  --color-mist: #f6f0fc;
+  --color-night: #26232e;
+  --color-night-soft: #5a5563;
+  --color-cream: #f6f4ee;
+  --color-mist: #efece3;
 
   --animate-twinkle: twinkle 3s ease-in-out infinite;
   --animate-float: float 6s ease-in-out infinite;
@@ -54,52 +56,44 @@
   }
 }
 
-/* Theme-scoped decorative tokens (backdrop orbs, card halo) */
+/* Theme-scoped decorative tokens */
 :root {
-  --backdrop-orb-1: rgb(237 233 254 / 0.9);
-  --backdrop-orb-2: rgb(252 231 243 / 0.8);
-  --backdrop-orb-3: rgb(204 251 241 / 0.6);
-  --backdrop-orb-4: rgb(254 243 199 / 0.55);
-  --card-halo: 139 92 246;
-}
-
-/*
- * Theme: "aura" — inspired by aura photography and soft-gradient orb art.
- * Warm paper background, near-charcoal text and saturated rainbow accents
- * glowing through heavily blurred orbs.
- */
-html[data-theme='aura'] {
-  --color-fairy-violet: #5a5af0;
-  --color-fairy-violet-deep: #3538c9;
-  --color-fairy-violet-soft: #e5e6fd;
-  --color-fairy-rose: #e93bb4;
-  --color-fairy-rose-deep: #b31c88;
-  --color-fairy-rose-soft: #fbe2f4;
-  --color-fairy-gold: #f97316;
-  --color-fairy-gold-deep: #c05609;
-  --color-fairy-gold-soft: #ffe8d4;
-  --color-fairy-teal: #10b981;
-  --color-fairy-teal-deep: #077a58;
-  --color-fairy-teal-soft: #d9f7ea;
-
-  --color-night: #26232e;
-  --color-night-soft: #5a5563;
-  --color-cream: #f6f4ee;
-  --color-mist: #efece3;
-
   --card-halo: 90 90 240;
 }
 
-/* Aura backdrop: clusters of overlapping blurred orbs, like aura photography */
-html[data-theme='aura'] .fairy-backdrop::before {
+/*
+ * Theme: "fairy" — the original lavender look. Dark violet text, pastel
+ * accents and a dreamy lilac wash.
+ */
+html[data-theme='fairy'] {
+  --color-fairy-violet: #8b5cf6;
+  --color-fairy-violet-deep: #6d28d9;
+  --color-fairy-violet-soft: #ede9fe;
+  --color-fairy-rose: #ec4899;
+  --color-fairy-rose-deep: #be185d;
+  --color-fairy-rose-soft: #fce7f3;
+  --color-fairy-gold: #d97706;
+  --color-fairy-gold-deep: #b45309;
+  --color-fairy-gold-soft: #fef3c7;
+  --color-fairy-teal: #0d9488;
+  --color-fairy-teal-deep: #0f766e;
+  --color-fairy-teal-soft: #ccfbf1;
+
+  --color-night: #372554;
+  --color-night-soft: #5b4a7a;
+  --color-cream: #fdfaff;
+  --color-mist: #f6f0fc;
+
+  --card-halo: 139 92 246;
+}
+
+/* Fairy backdrop: four soft pastel washes */
+html[data-theme='fairy'] .fairy-backdrop::before {
   background:
-    radial-gradient(ellipse 26% 20% at 22% 18%, rgb(233 59 180 / 0.4), transparent 65%),
-    radial-gradient(ellipse 52% 40% at 12% 12%, rgb(251 146 60 / 0.5), transparent 65%),
-    radial-gradient(ellipse 22% 17% at 81% 20%, rgb(90 90 240 / 0.38), transparent 65%),
-    radial-gradient(ellipse 46% 36% at 88% 13%, rgb(103 232 249 / 0.55), transparent 65%),
-    radial-gradient(ellipse 42% 34% at 14% 84%, rgb(52 211 153 / 0.45), transparent 65%),
-    radial-gradient(ellipse 38% 30% at 55% 74%, rgb(233 59 180 / 0.25), transparent 65%),
-    radial-gradient(ellipse 48% 38% at 86% 88%, rgb(253 224 71 / 0.5), transparent 65%);
+    radial-gradient(ellipse 60% 45% at 15% 12%, rgb(237 233 254 / 0.9), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 18%, rgb(252 231 243 / 0.8), transparent 60%),
+    radial-gradient(ellipse 45% 38% at 70% 80%, rgb(204 251 241 / 0.6), transparent 60%),
+    radial-gradient(ellipse 50% 42% at 20% 88%, rgb(254 243 199 / 0.55), transparent 60%);
 }
 
 body {
@@ -109,7 +103,7 @@ body {
 }
 
 /*
- * Dreamy page backdrop: soft aurora orbs.
+ * Dreamy page backdrop: clusters of overlapping blurred orbs.
  * Painted on a fixed, viewport-sized layer so the ellipses keep their shape
  * on any screen — on the (tall) body element they would stretch into columns.
  */
@@ -124,10 +118,13 @@ body {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 60% 45% at 15% 12%, var(--backdrop-orb-1), transparent 60%),
-    radial-gradient(ellipse 50% 40% at 85% 18%, var(--backdrop-orb-2), transparent 60%),
-    radial-gradient(ellipse 45% 38% at 70% 80%, var(--backdrop-orb-3), transparent 60%),
-    radial-gradient(ellipse 50% 42% at 20% 88%, var(--backdrop-orb-4), transparent 60%);
+    radial-gradient(ellipse 26% 20% at 22% 18%, rgb(233 59 180 / 0.4), transparent 65%),
+    radial-gradient(ellipse 52% 40% at 12% 12%, rgb(251 146 60 / 0.5), transparent 65%),
+    radial-gradient(ellipse 22% 17% at 81% 20%, rgb(90 90 240 / 0.38), transparent 65%),
+    radial-gradient(ellipse 46% 36% at 88% 13%, rgb(103 232 249 / 0.55), transparent 65%),
+    radial-gradient(ellipse 42% 34% at 14% 84%, rgb(52 211 153 / 0.45), transparent 65%),
+    radial-gradient(ellipse 38% 30% at 55% 74%, rgb(233 59 180 / 0.25), transparent 65%),
+    radial-gradient(ellipse 48% 38% at 86% 88%, rgb(253 224 71 / 0.5), transparent 65%);
 }
 
 .text-gradient-fairy {
