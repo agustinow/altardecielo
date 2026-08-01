@@ -8,7 +8,7 @@ export async function Footer({ settings }: { settings: SiteSettings }) {
   const t = await getTranslations('footer')
 
   return (
-    <footer className="border-t border-night/10">
+    <footer className="bg-linear-to-b from-transparent to-night/5">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-10 text-center sm:px-6">
         <Link href="/" className="font-display text-2xl font-bold text-gradient-fairy">
           ✦ {settings.siteName}
