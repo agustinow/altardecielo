@@ -15,7 +15,6 @@ function toDomain(doc: ServiceDoc): Service {
     excerpt: doc.excerpt,
     description: doc.description ?? null,
     benefits: (doc.benefits ?? []).map((item) => item.benefit),
-    price: doc.price ?? null,
     duration: doc.duration ?? null,
     modality: doc.modality ?? 'both',
     image: mapImage(doc.image),

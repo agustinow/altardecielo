@@ -65,9 +65,8 @@ async function seed() {
         'Desde muy chica sentí una conexión especial con lo invisible. El tarot llegó a mi vida como un lenguaje para traducir aquello que el corazón ya sabe.',
         'Hoy acompaño a personas de todo el mundo a encontrar claridad, sanar su energía y reconectar con su propósito a través del tarot, los registros akáshicos y las limpiezas energéticas.',
       ),
-      whatsappNumber: '5491100000000',
+      whatsappNumber: '+59891919348',
       instagramUrl: 'https://instagram.com/altardecielo',
-      contactEmail: 'hola@altardecielo.com',
       contactIntro: 'Escribime y te respondo a la brevedad. ¡Será un gusto acompañarte!',
     },
   })
@@ -116,7 +115,6 @@ async function seed() {
           'Orientación para tomar decisiones',
           'Un espacio de escucha sin juicios',
         ],
-        price: 'AR$ 25.000',
         duration: '60 minutos',
       },
       en: {
@@ -132,7 +130,6 @@ async function seed() {
           'Guidance for making decisions',
           'A judgment-free listening space',
         ],
-        price: 'USD 30',
         duration: '60 minutes',
       },
     },
@@ -154,7 +151,6 @@ async function seed() {
           'Conexión con el propósito de tu alma',
           'Sanación de vínculos y memorias',
         ],
-        price: 'AR$ 35.000',
         duration: '90 minutos',
       },
       en: {
@@ -169,7 +165,6 @@ async function seed() {
           "Connection with your soul's purpose",
           'Healing of bonds and memories',
         ],
-        price: 'USD 45',
         duration: '90 minutes',
       },
     },
@@ -191,7 +186,6 @@ async function seed() {
           'Protección y armonización de tu campo',
           'Limpieza de ambientes y espacios',
         ],
-        price: 'AR$ 28.000',
         duration: '75 minutos',
       },
       en: {
@@ -206,13 +200,11 @@ async function seed() {
           'Protection and harmonization of your field',
           'Cleansing of environments and spaces',
         ],
-        price: 'USD 35',
         duration: '75 minutes',
       },
     },
   ]
 
-  const serviceIds: Record<string, number> = {}
   for (const service of servicesData) {
     const created = await payload.create({
       collection: 'services',
@@ -226,7 +218,6 @@ async function seed() {
         excerpt: service.es.excerpt,
         description: service.es.description,
         benefits: service.es.benefits.map((benefit) => ({ benefit })),
-        price: service.es.price,
         duration: service.es.duration,
       },
     })
@@ -239,58 +230,13 @@ async function seed() {
         excerpt: service.en.excerpt,
         description: service.en.description,
         benefits: service.en.benefits.map((benefit) => ({ benefit })),
-        price: service.en.price,
         duration: service.en.duration,
       },
     })
-    serviceIds[service.slug] = created.id
   }
   payload.logger.info('Services seeded.')
 
-  // Testimonials
-  const testimonialsData = [
-    {
-      name: 'Lucía M.',
-      service: 'tarot',
-      order: 1,
-      es: 'La lectura con Ara me dio una claridad que hacía meses buscaba. Salí de la sesión sintiéndome escuchada y en paz.',
-      en: "Ara's reading gave me a clarity I had been seeking for months. I left the session feeling heard and at peace.",
-    },
-    {
-      name: 'Federico G.',
-      service: 'registros-akashicos',
-      order: 2,
-      es: 'Los registros akáshicos me ayudaron a entender patrones que repetía sin darme cuenta. Una experiencia transformadora.',
-      en: 'The akashic records helped me understand patterns I was repeating without realizing. A transforming experience.',
-    },
-    {
-      name: 'Camila R.',
-      service: 'limpieza-energetica',
-      order: 3,
-      es: 'Después de la limpieza energética sentí una liviandad increíble. Mi casa y yo respiramos distinto.',
-      en: 'After the energetic cleanse I felt an incredible lightness. My home and I breathe differently now.',
-    },
-  ]
-
-  for (const testimonial of testimonialsData) {
-    const created = await payload.create({
-      collection: 'testimonials',
-      locale: 'es',
-      data: {
-        name: testimonial.name,
-        quote: testimonial.es,
-        service: serviceIds[testimonial.service],
-        order: testimonial.order,
-      },
-    })
-    await payload.update({
-      collection: 'testimonials',
-      id: created.id,
-      locale: 'en',
-      data: { quote: testimonial.en },
-    })
-  }
-  payload.logger.info('Testimonials seeded.')
+  // Testimonials are added manually from the CMS once real ones exist.
 
   // FAQs
   const faqsData = [
@@ -325,12 +271,12 @@ async function seed() {
       es: {
         question: '¿Cómo reservo y pago mi sesión?',
         answer:
-          'Escribime por WhatsApp o por el formulario de contacto. Coordinamos día y horario, y te paso los medios de pago disponibles.',
+          'Escribime por WhatsApp. Coordinamos día y horario, te cuento el valor de la sesión y te paso los medios de pago disponibles.',
       },
       en: {
         question: 'How do I book and pay for my session?',
         answer:
-          'Message me on WhatsApp or through the contact form. We coordinate a date and time, and I will share the available payment methods.',
+          'Message me on WhatsApp. We coordinate a date and time, I share the session price and the available payment methods.',
       },
     },
     {

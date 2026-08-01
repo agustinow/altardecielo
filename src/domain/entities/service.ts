@@ -22,7 +22,6 @@ export interface Service {
   excerpt: string
   description: RichTextContent | null
   benefits: string[]
-  price: string | null
   duration: string | null
   modality: ServiceModality
   image: ImageResource | null

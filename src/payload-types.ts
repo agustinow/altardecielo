@@ -70,7 +70,6 @@ export interface Config {
     services: Service;
     testimonials: Testimonial;
     faqs: Faq;
-    'contact-requests': ContactRequest;
     media: Media;
     users: User;
     'payload-kv': PayloadKv;
@@ -83,7 +82,6 @@ export interface Config {
     services: ServicesSelect<false> | ServicesSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     faqs: FaqsSelect<false> | FaqsSelect<true>;
-    'contact-requests': ContactRequestsSelect<false> | ContactRequestsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -165,10 +163,6 @@ export interface Service {
         id?: string | null;
       }[]
     | null;
-  /**
-   * Free text, e.g. "AR$ 25.000" or "USD 30".
-   */
-  price?: string | null;
   /**
    * E.g. "60 minutes".
    */
@@ -254,23 +248,6 @@ export interface Faq {
   createdAt: string;
 }
 /**
- * Messages sent from the website contact form.
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "contact-requests".
- */
-export interface ContactRequest {
-  id: number;
-  name: string;
-  email: string;
-  message: string;
-  service?: (number | null) | Service;
-  locale?: string | null;
-  status?: ('new' | 'replied' | 'archived') | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
@@ -331,10 +308,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'faqs';
         value: number | Faq;
-      } | null)
-    | ({
-        relationTo: 'contact-requests';
-        value: number | ContactRequest;
       } | null)
     | ({
         relationTo: 'media';
@@ -401,7 +374,6 @@ export interface ServicesSelect<T extends boolean = true> {
         benefit?: T;
         id?: T;
       };
-  price?: T;
   duration?: T;
   modality?: T;
   image?: T;
@@ -430,20 +402,6 @@ export interface FaqsSelect<T extends boolean = true> {
   question?: T;
   answer?: T;
   order?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "contact-requests_select".
- */
-export interface ContactRequestsSelect<T extends boolean = true> {
-  name?: T;
-  email?: T;
-  message?: T;
-  service?: T;
-  locale?: T;
-  status?: T;
   updatedAt?: T;
   createdAt?: T;
 }

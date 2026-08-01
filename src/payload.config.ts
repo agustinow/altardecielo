@@ -7,7 +7,6 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
 
-import { ContactRequests } from '@/collections/ContactRequests'
 import { Faqs } from '@/collections/Faqs'
 import { Media } from '@/collections/Media'
 import { Services } from '@/collections/Services'
@@ -38,7 +37,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Services, Testimonials, Faqs, ContactRequests, Media, Users],
+  collections: [Services, Testimonials, Faqs, Media, Users],
   db,
   globals: [SiteSettings],
   localization: {

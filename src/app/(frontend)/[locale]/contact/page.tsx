@@ -3,7 +3,6 @@ import { getTranslations } from 'next-intl/server'
 
 import type { Locale } from '@/domain/locale'
 import { getContainer } from '@/infrastructure/container'
-import { ContactForm } from '@/presentation/components/contact-form'
 import { Reveal } from '@/presentation/components/reveal'
 import { SectionHeading } from '@/presentation/components/section-heading'
 import { buildWhatsAppUrl } from '@/presentation/lib/whatsapp'
@@ -26,9 +25,8 @@ export default async function ContactPage({ params }: Props) {
   const { locale } = await params
   const container = await getContainer()
 
-  const [settings, services, t] = await Promise.all([
+  const [settings, t] = await Promise.all([
     container.getSiteSettings(locale as Locale),
-    container.getServices(locale as Locale),
     getTranslations({ locale, namespace: 'contact' }),
   ])
 
@@ -41,26 +39,38 @@ export default async function ContactPage({ params }: Props) {
         />
 
         <Reveal>
-          <div className="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-lg shadow-fairy-violet/10 backdrop-blur-sm sm:p-8">
-            <ContactForm
-              services={services.map((s) => ({ id: s.id, title: s.title }))}
-            />
+          <div className="rounded-3xl border border-white/60 bg-white/70 p-8 text-center shadow-lg shadow-fairy-violet/10 backdrop-blur-sm sm:p-12">
+            <span aria-hidden className="text-5xl">
+              💬
+            </span>
+            <p className="mx-auto mt-5 max-w-md text-night-soft">
+              {t('whatsappIntro')}
+            </p>
+            {settings.whatsappNumber ? (
+              <a
+                href={buildWhatsAppUrl(settings.whatsappNumber)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-block w-full max-w-96 rounded-full bg-gradient-fairy px-10 py-4 text-base font-semibold text-white shadow-lg shadow-fairy-violet/30 transition-transform hover:scale-105 sm:w-auto sm:text-lg"
+              >
+                {t('whatsappCta')} ✨
+              </a>
+            ) : null}
+            {settings.instagramUrl ? (
+              <p className="mt-8 text-sm text-night-soft">
+                {t('instagramIntro')}{' '}
+                <a
+                  href={settings.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-fairy-violet-deep hover:underline"
+                >
+                  Instagram
+                </a>
+              </p>
+            ) : null}
           </div>
         </Reveal>
-
-        {settings.whatsappNumber ? (
-          <Reveal delay={0.1} className="mt-10 text-center">
-            <p className="text-night-soft">{t('orWhatsapp')}</p>
-            <a
-              href={buildWhatsAppUrl(settings.whatsappNumber)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-block rounded-full border-2 border-fairy-teal bg-white/70 px-8 py-3 font-semibold text-fairy-teal-deep transition-colors hover:bg-fairy-teal-soft"
-            >
-              {t('whatsappCta')} 💬
-            </a>
-          </Reveal>
-        ) : null}
       </div>
     </section>
   )

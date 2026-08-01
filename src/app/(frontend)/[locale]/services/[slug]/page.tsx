@@ -55,7 +55,6 @@ export default async function ServiceDetailPage({ params }: Props) {
     : null
 
   const details: { label: string; value: string }[] = [
-    service.price ? { label: tCommon('price'), value: service.price } : null,
     service.duration ? { label: tCommon('duration'), value: service.duration } : null,
     {
       label: tCommon('modality'),

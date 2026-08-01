@@ -12,7 +12,7 @@ export const Services: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'price', 'order'],
+    defaultColumns: ['title', 'order'],
   },
   defaultSort: 'order',
   fields: [
@@ -69,17 +69,6 @@ export const Services: CollectionConfig = {
           required: true,
         },
       ],
-    },
-    {
-      name: 'price',
-      type: 'text',
-      localized: true,
-      admin: {
-        description: {
-          es: 'Texto libre, ej: "AR$ 25.000" o "USD 30".',
-          en: 'Free text, e.g. "AR$ 25.000" or "USD 30".',
-        },
-      },
     },
     {
       name: 'duration',

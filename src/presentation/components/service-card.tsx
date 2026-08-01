@@ -5,27 +5,27 @@ import { Link } from '@/i18n/navigation'
 
 import { Reveal } from './reveal'
 
-const ACCENT_STYLES: Record<
-  ServiceAccent,
-  { badge: string; halo: string; link: string }
-> = {
+/** Bundled artwork used when a service has no image uploaded in the CMS. */
+const FALLBACK_IMAGES: Record<string, string> = {
+  tarot: '/images/services/tarot.webp',
+  'registros-akashicos': '/images/services/registros-akashicos.webp',
+  'limpieza-energetica': '/images/services/limpieza-energetica.webp',
+}
+
+const ACCENT_STYLES: Record<ServiceAccent, { halo: string; link: string }> = {
   violet: {
-    badge: 'bg-fairy-violet-soft text-fairy-violet-deep',
     halo: 'from-fairy-violet-soft',
     link: 'text-fairy-violet-deep',
   },
   rose: {
-    badge: 'bg-fairy-rose-soft text-fairy-rose-deep',
     halo: 'from-fairy-rose-soft',
     link: 'text-fairy-rose-deep',
   },
   gold: {
-    badge: 'bg-fairy-gold-soft text-fairy-gold-deep',
     halo: 'from-fairy-gold-soft',
     link: 'text-fairy-gold-deep',
   },
   teal: {
-    badge: 'bg-fairy-teal-soft text-fairy-teal-deep',
     halo: 'from-fairy-teal-soft',
     link: 'text-fairy-teal-deep',
   },
@@ -41,6 +41,11 @@ export function ServiceCard({
   delay?: number
 }) {
   const accent = ACCENT_STYLES[service.accent]
+  const image =
+    service.image ??
+    (FALLBACK_IMAGES[service.slug]
+      ? { url: FALLBACK_IMAGES[service.slug], alt: service.title }
+      : null)
 
   return (
     <Reveal delay={delay} className="h-full">
@@ -51,10 +56,10 @@ export function ServiceCard({
         <div
           className={`relative h-48 w-full bg-gradient-to-br ${accent.halo} to-white`}
         >
-          {service.image ? (
+          {image ? (
             <Image
-              src={service.image.url}
-              alt={service.image.alt || service.title}
+              src={image.url}
+              alt={image.alt || service.title}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 33vw"
@@ -70,13 +75,6 @@ export function ServiceCard({
             {service.title}
           </h3>
           <p className="flex-1 text-night-soft">{service.excerpt}</p>
-          {service.price ? (
-            <span
-              className={`w-fit rounded-full px-3 py-1 text-sm font-semibold ${accent.badge}`}
-            >
-              {service.price}
-            </span>
-          ) : null}
           <span
             className={`text-sm font-semibold ${accent.link} transition-transform group-hover:translate-x-1`}
           >

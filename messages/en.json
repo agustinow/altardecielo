@@ -10,7 +10,6 @@
     "bookWhatsapp": "Book via WhatsApp",
     "learnMore": "Learn more",
     "seeAllServices": "See all services",
-    "price": "Price",
     "duration": "Duration",
     "modality": "Modality",
     "modalityOnline": "Online",
@@ -49,23 +48,9 @@
   "contact": {
     "title": "Contact",
     "subtitle": "Write to me and I'll get back to you shortly",
-    "form": {
-      "name": "Your name",
-      "email": "Your email",
-      "service": "Service of interest (optional)",
-      "serviceNone": "— Choose a service —",
-      "message": "Your message",
-      "messagePlaceholder": "Tell me how I can support you...",
-      "submit": "Send message",
-      "sending": "Sending...",
-      "success": "Thank you for your message! I'll get back to you very soon.",
-      "errorGeneric": "Something went wrong while sending your message. Please try again in a few minutes.",
-      "errorName": "Please enter your name (at least 2 characters).",
-      "errorEmail": "Please enter a valid email address.",
-      "errorMessage": "Your message should be at least 10 characters long."
-    },
-    "orWhatsapp": "Prefer something more direct?",
-    "whatsappCta": "Message me on WhatsApp"
+    "whatsappIntro": "The quickest and most direct way to book your session, ask about prices or anything else is WhatsApp.",
+    "whatsappCta": "Message me on WhatsApp",
+    "instagramIntro": "You can also find me on"
   },
   "footer": {
     "tagline": "Tarot · Akashic records · Energetic cleanses",
