@@ -1,18 +1,29 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
+import { getServicesContent } from '@/content/services'
 import type { ServiceModality } from '@/domain/entities/service'
 import type { Locale } from '@/domain/locale'
+import { LOCALES } from '@/domain/locale'
 import { getContainer } from '@/infrastructure/container'
 import { buildWhatsAppUrl } from '@/presentation/lib/whatsapp'
 import { localeAlternates } from '@/presentation/lib/seo'
+import { Prose } from '@/presentation/components/prose'
 import { Reveal } from '@/presentation/components/reveal'
-import { RichText } from '@/presentation/components/rich-text'
 import { ServiceCard } from '@/presentation/components/service-card'
 
 type Props = { params: Promise<{ locale: string; slug: string }> }
+
+export function generateStaticParams() {
+  return LOCALES.flatMap((locale) =>
+    getServicesContent(locale).map((service) => ({
+      locale,
+      slug: service.slug,
+    })),
+  )
+}
 
 const MODALITY_KEYS: Record<ServiceModality, string> = {
   online: 'modalityOnline',
@@ -34,6 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServiceDetailPage({ params }: Props) {
   const { locale, slug } = await params
+  setRequestLocale(locale)
   const container = await getContainer()
 
   const [service, allServices, settings, t, tCommon] = await Promise.all([
@@ -109,9 +121,9 @@ export default async function ServiceDetailPage({ params }: Props) {
           </div>
         </Reveal>
 
-        {service.description ? (
+        {service.description.length > 0 ? (
           <Reveal delay={0.2} className="mt-12">
-            <RichText content={service.description} />
+            <Prose paragraphs={service.description} />
           </Reveal>
         ) : null}
 

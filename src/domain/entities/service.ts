@@ -9,18 +9,13 @@ export interface ImageResource {
   height?: number
 }
 
-/**
- * Opaque rich text content (serialized editor state). The domain doesn't
- * depend on any editor; the presentation layer knows how to render it.
- */
-export type RichTextContent = unknown
-
 export interface Service {
   id: string
   slug: string
   title: string
   excerpt: string
-  description: RichTextContent | null
+  /** Plain paragraphs. */
+  description: string[]
   benefits: string[]
   duration: string | null
   modality: ServiceModality

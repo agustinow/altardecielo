@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import type { Locale } from '@/domain/locale'
 import { getContainer } from '@/infrastructure/container'
+import { Prose } from '@/presentation/components/prose'
 import { Reveal } from '@/presentation/components/reveal'
-import { RichText } from '@/presentation/components/rich-text'
 import { Sparkles } from '@/presentation/components/sparkles'
 import { localeAlternates } from '@/presentation/lib/seo'
 
@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params
+  setRequestLocale(locale)
   const container = await getContainer()
 
   const [settings, t] = await Promise.all([
@@ -57,8 +58,8 @@ export default async function AboutPage({ params }: Props) {
           ) : null}
 
           <Reveal delay={0.15} className="flex-1">
-            {settings.aboutContent ? (
-              <RichText content={settings.aboutContent} />
+            {settings.aboutContent.length > 0 ? (
+              <Prose paragraphs={settings.aboutContent} />
             ) : (
               <p className="text-lg text-night-soft">{t('fallbackContent')}</p>
             )}

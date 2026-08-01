@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Cormorant_Garamond, Quicksand } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import type { Locale } from '@/domain/locale'
 import { routing } from '@/i18n/routing'
@@ -14,8 +14,10 @@ import { localeAlternates } from '@/presentation/lib/seo'
 
 import '../globals.css'
 
-// Content is managed in the CMS — render dynamically so edits show immediately.
-export const dynamic = 'force-dynamic'
+// Content lives in static files — prerender every locale at build time.
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -55,6 +57,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   if (!hasLocale(routing.locales, locale)) {
     notFound()
   }
+  setRequestLocale(locale)
 
   const container = await getContainer()
   const settings = await container.getSiteSettings(locale as Locale)

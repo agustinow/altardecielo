@@ -1,4 +1,4 @@
-import type { ImageResource, RichTextContent } from './service'
+import type { ImageResource } from './service'
 
 export interface SiteSettings {
   siteName: string
@@ -6,7 +6,8 @@ export interface SiteSettings {
   heroTitle: string | null
   heroSubtitle: string | null
   aboutTitle: string | null
-  aboutContent: RichTextContent | null
+  /** Plain paragraphs. */
+  aboutContent: string[]
   aboutImage: ImageResource | null
   whatsappNumber: string | null
   instagramUrl: string | null

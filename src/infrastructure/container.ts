@@ -1,34 +1,24 @@
-import config from '@payload-config'
-import { getPayload } from 'payload'
-
 import { getFaqs } from '@/application/get-faqs'
 import { getServiceBySlug } from '@/application/get-service-by-slug'
 import { getServices } from '@/application/get-services'
 import { getSiteSettings } from '@/application/get-site-settings'
 import { getTestimonials } from '@/application/get-testimonials'
 
-import { PayloadFaqRepository } from './payload/payload-faq-repository'
-import { PayloadServiceRepository } from './payload/payload-service-repository'
-import { PayloadSiteSettingsRepository } from './payload/payload-site-settings-repository'
-import { PayloadTestimonialRepository } from './payload/payload-testimonial-repository'
+import { StaticFaqRepository } from './static/static-faq-repository'
+import { StaticServiceRepository } from './static/static-service-repository'
+import { StaticSiteSettingsRepository } from './static/static-site-settings-repository'
+import { StaticTestimonialRepository } from './static/static-testimonial-repository'
 
 /**
- * Composition root. `getPayload` caches its instance across calls, so this is
- * cheap to call from any server component or action.
+ * Composition root. Content is served from static files in `src/content`;
+ * swap these repositories for CMS-backed ones if a CMS is reintroduced.
  */
 export async function getContainer() {
-  const payload = await getPayload({ config })
-
-  const serviceRepository = new PayloadServiceRepository(payload)
-  const testimonialRepository = new PayloadTestimonialRepository(payload)
-  const faqRepository = new PayloadFaqRepository(payload)
-  const siteSettingsRepository = new PayloadSiteSettingsRepository(payload)
-
   return {
-    getServices: getServices(serviceRepository),
-    getServiceBySlug: getServiceBySlug(serviceRepository),
-    getTestimonials: getTestimonials(testimonialRepository),
-    getFaqs: getFaqs(faqRepository),
-    getSiteSettings: getSiteSettings(siteSettingsRepository),
+    getServices: getServices(new StaticServiceRepository()),
+    getServiceBySlug: getServiceBySlug(new StaticServiceRepository()),
+    getTestimonials: getTestimonials(new StaticTestimonialRepository()),
+    getFaqs: getFaqs(new StaticFaqRepository()),
+    getSiteSettings: getSiteSettings(new StaticSiteSettingsRepository()),
   }
 }

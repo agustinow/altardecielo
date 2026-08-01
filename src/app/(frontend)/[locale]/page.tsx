@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import type { Locale } from '@/domain/locale'
 import { Link } from '@/i18n/navigation'
@@ -15,6 +15,7 @@ export default async function HomePage({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const container = await getContainer()
 
   const [settings, services, testimonials, tHome, tCommon] = await Promise.all([

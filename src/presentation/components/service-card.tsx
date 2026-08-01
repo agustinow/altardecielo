@@ -5,13 +5,6 @@ import { Link } from '@/i18n/navigation'
 
 import { Reveal } from './reveal'
 
-/** Bundled artwork used when a service has no image uploaded in the CMS. */
-const FALLBACK_IMAGES: Record<string, string> = {
-  tarot: '/images/services/tarot.webp',
-  'registros-akashicos': '/images/services/registros-akashicos.webp',
-  'limpieza-energetica': '/images/services/limpieza-energetica.webp',
-}
-
 const ACCENT_STYLES: Record<ServiceAccent, { halo: string; link: string }> = {
   violet: {
     halo: 'from-fairy-violet-soft',
@@ -41,11 +34,7 @@ export function ServiceCard({
   delay?: number
 }) {
   const accent = ACCENT_STYLES[service.accent]
-  const image =
-    service.image ??
-    (FALLBACK_IMAGES[service.slug]
-      ? { url: FALLBACK_IMAGES[service.slug], alt: service.title }
-      : null)
+  const image = service.image
 
   return (
     <Reveal delay={delay} className="h-full">
