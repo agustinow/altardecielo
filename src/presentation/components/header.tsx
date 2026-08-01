@@ -25,7 +25,7 @@ export function Header({ siteName }: { siteName: string }) {
     href === '/' ? pathname === '/' : pathname.startsWith(href)
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/50 bg-white/70 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-night/5 bg-cream/70 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <Link
           href="/"
@@ -74,7 +74,7 @@ export function Header({ siteName }: { siteName: string }) {
       </div>
 
       {open ? (
-        <nav className="border-t border-white/50 px-4 pb-4 md:hidden">
+        <nav className="border-t border-night/5 px-4 pb-4 md:hidden">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.key}
