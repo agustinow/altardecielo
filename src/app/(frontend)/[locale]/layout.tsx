@@ -11,6 +11,7 @@ import { Fairy } from '@/presentation/components/fairy'
 import { Footer } from '@/presentation/components/footer'
 import { Header } from '@/presentation/components/header'
 import { localeAlternates } from '@/presentation/lib/seo'
+import { THEME_STORAGE_KEY, THEMES } from '@/presentation/lib/theme'
 
 import '../globals.css'
 
@@ -62,9 +63,17 @@ export default async function LocaleLayout({ children, params }: Props) {
   const container = await getContainer()
   const settings = await container.getSiteSettings(locale as Locale)
 
+  // Applies the stored theme before first paint to avoid a flash.
+  const themeScript = `try{var t=localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)});if(${JSON.stringify([...THEMES])}.indexOf(t)>-1){document.documentElement.dataset.theme=t}}catch(e){}`
+
   return (
-    <html lang={locale} className={`${cormorant.variable} ${quicksand.variable}`}>
+    <html
+      lang={locale}
+      className={`${cormorant.variable} ${quicksand.variable}`}
+      suppressHydrationWarning
+    >
       <body className="fairy-backdrop flex min-h-screen flex-col">
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <NextIntlClientProvider>
           <Header siteName={settings.siteName} />
           <main className="flex-1">{children}</main>

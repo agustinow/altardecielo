@@ -52,6 +52,10 @@
     "whatsappCta": "Message me on WhatsApp",
     "instagramIntro": "You can also find me on"
   },
+  "theme": {
+    "fairy": "Fairy theme",
+    "aura": "Aura theme"
+  },
   "footer": {
     "tagline": "Tarot · Akashic records · Energetic cleanses",
     "rights": "All rights reserved.",

@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { Link, usePathname } from '@/i18n/navigation'
 
 import { LocaleSwitcher } from './locale-switcher'
+import { ThemeSwitcher } from './theme-switcher'
 
 const NAV_ITEMS = [
   { href: '/', key: 'home' },
@@ -49,9 +50,11 @@ export function Header({ siteName }: { siteName: string }) {
             </Link>
           ))}
           <LocaleSwitcher />
+          <ThemeSwitcher />
         </nav>
 
         <div className="flex items-center gap-3 md:hidden">
+          <ThemeSwitcher />
           <LocaleSwitcher />
           <button
             type="button"

@@ -52,6 +52,10 @@
     "whatsappCta": "Escribime por WhatsApp",
     "instagramIntro": "También podés encontrarme en"
   },
+  "theme": {
+    "fairy": "Tema hada",
+    "aura": "Tema aura"
+  },
   "footer": {
     "tagline": "Tarot · Registros akáshicos · Limpiezas energéticas",
     "rights": "Todos los derechos reservados.",
