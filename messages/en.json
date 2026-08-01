@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "common": {
+    "bookWhatsapp": "Book via WhatsApp",
+    "learnMore": "Learn more",
+    "seeAllServices": "See all services",
+    "price": "Price",
+    "duration": "Duration",
+    "modality": "Modality",
+    "modalityOnline": "Online",
+    "modalityInPerson": "In person",
+    "modalityBoth": "Online & in person",
+    "whatsappMessage": "Hi Ara, I would like to book a {service} session."
+  },
+  "home": {
+    "heroTitleFallback": "A magical space for your soul",
+    "heroSubtitleFallback": "Tarot, akashic records and energetic cleanses to reconnect with your inner light.",
+    "heroCta": "Discover services",
+    "servicesTitle": "Services",
+    "servicesSubtitle": "Choose the path your soul needs today",
+    "testimonialsTitle": "Testimonials",
+    "testimonialsSubtitle": "Experiences from those who walked this path",
+    "ctaTitle": "Ready to begin your journey?",
+    "ctaSubtitle": "Write to me and together we'll find the perfect session for you.",
+    "ctaButton": "Contact me"
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Every session is a unique encounter, prepared with love and care",
+    "benefitsTitle": "What you'll take with you",
+    "detailsTitle": "Session details",
+    "otherServices": "Other services"
+  },
+  "about": {
+    "title": "About me",
+    "fallbackTitle": "Hi, I'm Ara",
+    "fallbackContent": "You'll be able to read my story here very soon."
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Everything you need to know before your first session"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Write to me and I'll get back to you shortly",
+    "form": {
+      "name": "Your name",
+      "email": "Your email",
+      "service": "Service of interest (optional)",
+      "serviceNone": "— Choose a service —",
+      "message": "Your message",
+      "messagePlaceholder": "Tell me how I can support you...",
+      "submit": "Send message",
+      "sending": "Sending...",
+      "success": "Thank you for your message! I'll get back to you very soon.",
+      "errorGeneric": "Something went wrong while sending your message. Please try again in a few minutes.",
+      "errorName": "Please enter your name (at least 2 characters).",
+      "errorEmail": "Please enter a valid email address.",
+      "errorMessage": "Your message should be at least 10 characters long."
+    },
+    "orWhatsapp": "Prefer something more direct?",
+    "whatsappCta": "Message me on WhatsApp"
+  },
+  "footer": {
+    "tagline": "Tarot · Akashic records · Energetic cleanses",
+    "rights": "All rights reserved.",
+    "madeWith": "Made with magic and love"
+  },
+  "meta": {
+    "titleTemplate": "Tarot, Akashic Records & Energetic Cleanses",
+    "description": "Tarot sessions, akashic records readings and energetic cleanses, online and in person. A magical space to reconnect with your inner light.",
+    "servicesDescription": "Discover every session available: tarot, akashic records and energetic cleanses.",
+    "aboutDescription": "Learn about my story and my path in tarot and energy healing.",
+    "faqDescription": "Answers to the most frequent questions about the sessions.",
+    "contactDescription": "Write to me to book your session or ask anything you need."
+  },
+  "notFound": {
+    "title": "This page got lost among the fairies",
+    "subtitle": "The path you're looking for doesn't exist or has moved.",
+    "backHome": "Back home"
+  }
+}

@@ -1,0 +1,89 @@
+import Image from 'next/image'
+
+import type { Service, ServiceAccent } from '@/domain/entities/service'
+import { Link } from '@/i18n/navigation'
+
+import { Reveal } from './reveal'
+
+const ACCENT_STYLES: Record<
+  ServiceAccent,
+  { badge: string; halo: string; link: string }
+> = {
+  violet: {
+    badge: 'bg-fairy-violet-soft text-fairy-violet-deep',
+    halo: 'from-fairy-violet-soft',
+    link: 'text-fairy-violet-deep',
+  },
+  rose: {
+    badge: 'bg-fairy-rose-soft text-fairy-rose-deep',
+    halo: 'from-fairy-rose-soft',
+    link: 'text-fairy-rose-deep',
+  },
+  gold: {
+    badge: 'bg-fairy-gold-soft text-fairy-gold-deep',
+    halo: 'from-fairy-gold-soft',
+    link: 'text-fairy-gold-deep',
+  },
+  teal: {
+    badge: 'bg-fairy-teal-soft text-fairy-teal-deep',
+    halo: 'from-fairy-teal-soft',
+    link: 'text-fairy-teal-deep',
+  },
+}
+
+export function ServiceCard({
+  service,
+  learnMoreLabel,
+  delay = 0,
+}: {
+  service: Service
+  learnMoreLabel: string
+  delay?: number
+}) {
+  const accent = ACCENT_STYLES[service.accent]
+
+  return (
+    <Reveal delay={delay} className="h-full">
+      <Link
+        href={`/services/${service.slug}`}
+        className="fairy-card group flex h-full flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/70 shadow-lg shadow-fairy-violet/5 backdrop-blur-sm"
+      >
+        <div
+          className={`relative h-48 w-full bg-gradient-to-br ${accent.halo} to-white`}
+        >
+          {service.image ? (
+            <Image
+              src={service.image.url}
+              alt={service.image.alt || service.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          ) : (
+            <div className="flex h-full items-center justify-center">
+              <span className="font-display text-6xl opacity-30">✦</span>
+            </div>
+          )}
+        </div>
+        <div className="flex flex-1 flex-col gap-3 p-6">
+          <h3 className="font-display text-2xl font-semibold text-night">
+            {service.title}
+          </h3>
+          <p className="flex-1 text-night-soft">{service.excerpt}</p>
+          {service.price ? (
+            <span
+              className={`w-fit rounded-full px-3 py-1 text-sm font-semibold ${accent.badge}`}
+            >
+              {service.price}
+            </span>
+          ) : null}
+          <span
+            className={`text-sm font-semibold ${accent.link} transition-transform group-hover:translate-x-1`}
+          >
+            {learnMoreLabel} →
+          </span>
+        </div>
+      </Link>
+    </Reveal>
+  )
+}

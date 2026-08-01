@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "about": "Sobre mí",
+    "faq": "Preguntas",
+    "contact": "Contacto"
+  },
+  "common": {
+    "bookWhatsapp": "Reservar por WhatsApp",
+    "learnMore": "Conocer más",
+    "seeAllServices": "Ver todos los servicios",
+    "price": "Valor",
+    "duration": "Duración",
+    "modality": "Modalidad",
+    "modalityOnline": "Online",
+    "modalityInPerson": "Presencial",
+    "modalityBoth": "Online y presencial",
+    "whatsappMessage": "Hola Ara, me gustaría reservar una sesión de {service}."
+  },
+  "home": {
+    "heroTitleFallback": "Un espacio mágico para tu alma",
+    "heroSubtitleFallback": "Tarot, registros akáshicos y limpiezas energéticas para reconectar con tu luz interior.",
+    "heroCta": "Descubrir servicios",
+    "servicesTitle": "Servicios",
+    "servicesSubtitle": "Elegí el camino que tu alma necesita hoy",
+    "testimonialsTitle": "Testimonios",
+    "testimonialsSubtitle": "Experiencias de quienes ya pasaron por aquí",
+    "ctaTitle": "¿Lista para comenzar tu viaje?",
+    "ctaSubtitle": "Escribime y encontremos juntas la sesión perfecta para vos.",
+    "ctaButton": "Contactame"
+  },
+  "services": {
+    "title": "Servicios",
+    "subtitle": "Cada sesión es un encuentro único, preparado con amor y dedicación",
+    "benefitsTitle": "¿Qué te llevás?",
+    "detailsTitle": "Detalles de la sesión",
+    "otherServices": "Otros servicios"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "fallbackTitle": "Hola, soy Ara",
+    "fallbackContent": "Muy pronto vas a poder leer mi historia aquí."
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Todo lo que necesitás saber antes de tu primera sesión"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Escribime y te respondo a la brevedad",
+    "form": {
+      "name": "Tu nombre",
+      "email": "Tu email",
+      "service": "Servicio de interés (opcional)",
+      "serviceNone": "— Elegir un servicio —",
+      "message": "Tu mensaje",
+      "messagePlaceholder": "Contame en qué te puedo acompañar...",
+      "submit": "Enviar mensaje",
+      "sending": "Enviando...",
+      "success": "¡Gracias por tu mensaje! Te voy a responder muy pronto.",
+      "errorGeneric": "Ocurrió un error al enviar el mensaje. Probá de nuevo en unos minutos.",
+      "errorName": "Ingresá tu nombre (al menos 2 caracteres).",
+      "errorEmail": "Ingresá un email válido.",
+      "errorMessage": "El mensaje debe tener al menos 10 caracteres."
+    },
+    "orWhatsapp": "¿Preferís algo más directo?",
+    "whatsappCta": "Escribime por WhatsApp"
+  },
+  "footer": {
+    "tagline": "Tarot · Registros akáshicos · Limpiezas energéticas",
+    "rights": "Todos los derechos reservados.",
+    "madeWith": "Hecho con magia y cariño"
+  },
+  "meta": {
+    "titleTemplate": "Tarot, Registros Akáshicos y Limpiezas Energéticas",
+    "description": "Sesiones de tarot, lecturas de registros akáshicos y limpiezas energéticas, online y presenciales. Un espacio mágico para reconectar con tu luz interior.",
+    "servicesDescription": "Conocé todas las sesiones disponibles: tarot, registros akáshicos y limpiezas energéticas.",
+    "aboutDescription": "Conocé mi historia y mi camino en el tarot y las terapias energéticas.",
+    "faqDescription": "Respuestas a las preguntas más frecuentes sobre las sesiones.",
+    "contactDescription": "Escribime para reservar tu sesión o consultarme lo que necesites."
+  },
+  "notFound": {
+    "title": "Esta página se perdió entre las hadas",
+    "subtitle": "El camino que buscás no existe o cambió de lugar.",
+    "backHome": "Volver al inicio"
+  }
+}
