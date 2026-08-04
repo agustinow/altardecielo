@@ -154,7 +154,7 @@ body {
 
 .fairy-wing {
   transform-box: fill-box;
-  transform-origin: bottom right;
+  transform-origin: right center;
   animation: fairy-flutter 0.3s ease-in-out infinite alternate;
 }
 
@@ -174,10 +174,10 @@ body {
 
 @keyframes fairy-flutter {
   from {
-    transform: rotate(9deg);
+    transform: rotate(5deg);
   }
   to {
-    transform: rotate(-20deg) scaleY(0.82);
+    transform: rotate(-12deg) scaleX(0.88);
   }
 }
 
